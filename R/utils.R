@@ -16,10 +16,10 @@ base_url <- "http://wheelmap.org/api/nodes"
 
 
 
-#' Parses content returned by query to the News API.
+#' Parses content returned by query to the Wheelmap API.
 #'
 #' \code{parse_wheelmap_content} parses the content sent back by
-#' the News API to an R list.
+#' the Wheelmap API to an R list.
 #'
 #' @param response httr response object
 #'
@@ -40,10 +40,10 @@ parse_wheelmap_content <- function(response){
 #' parsed content.
 #'
 #' @param response httr response object
-#' @param content_parsed parsed content of a response to News API query
+#' @param content_parsed parsed content of a response to Wheelmap query
 #'
 #' @return data frame containing meta data related to the query.
-extract_newsanchor_metadata <- function(response, content_parsed){
+extract_wheelmap_metadata <- function(response, content_parsed){
   metadata <- data.frame(total_results = content_parsed$meta$item_count_total,
                          results_returned = content_parsed$meta$item_count,
                          status_code   = response$status_code,
@@ -54,13 +54,13 @@ extract_newsanchor_metadata <- function(response, content_parsed){
 }
 
 
-#' Extracts data frame with News API sources from response object.
+#' Extracts data frame with Wheelmap locations from response object.
 #'
-#' \code{extract_newsanchor_sources} extracts a data frame containing the News API sources that
-#' matched the request to News API sources endpoint.
+#' \code{extract_wheelmap_locations} extracts a data frame containing the Wheelmap sources that
+#' matched the request to Wheelmap location endpoint.
 #'
-#' @param metadata data frame containing meta data related to the request, see extract_newsanchor_metadata.
-#' @param content_parsed parsed content of a response to News API query
+#' @param metadata data frame containing meta data related to the request, see extract_wheelmap_metadata.
+#' @param content_parsed parsed content of a response to wheelmap query
 #'
 #' @return data frame containing sources.
 

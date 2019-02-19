@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{parse_wheelmap_content}
 \alias{parse_wheelmap_content}
-\title{Parses content returned by query to the News API.}
+\title{Parses content returned by query to the Wheelmap API.}
 \usage{
 parse_wheelmap_content(response)
 }
@@ -14,5 +14,5 @@ R list.
 }
 \description{
 \code{parse_wheelmap_content} parses the content sent back by
-the News API to an R list.
+the Wheelmap API to an R list.
 }

@@ -39,7 +39,7 @@ get_wheelmap_locations <- function(api_key=api_key,q = NULL, bbox = NULL, wheelc
   # Get the content and return it as a data.frame
   content_parsed <- parse_wheelmap_content(res)
   # Get meta data
-  meta <- extract_newsanchor_metadata(res, content_parsed)
+  meta <- extract_wheelmap_metadata(res, content_parsed)
   # extract results
   locations <- extract_wheelmap_locations(meta, content_parsed)
   # return results in list
