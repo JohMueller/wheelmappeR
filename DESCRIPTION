@@ -1,0 +1,22 @@
+Package: wheelmappeR
+Title: Wrapper for the Wheelmap API
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Johannes",
+           family = "Mueller",
+           role = c("cre", "aut"),
+           email = "johannes.m@correlaid.org")
+Description: A long description of this super package I'm
+    working on.
+License: {{ License }}
+URL: http://this
+BugReports: http://that
+Imports: 
+    attempt,
+    curl,
+    httr,
+    jsonlite,
+    purrr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
