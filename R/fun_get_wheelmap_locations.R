@@ -29,6 +29,11 @@
 
 get_wheelmap_locations <- function(api_key=NULL,q = NULL, bbox = NULL, wheelchair = NULL, page = NULL, per_page = NULL){
 
+  args <- list(api_key = api_key, q = q, bbox=bbox, wheelchair=wheelchair, page = page,per_page=per_page)
+
+  # Check that at least one argument is not null
+  stop_if_all(args[2:6], is.null, "You need to specify at least one argument")
+
   #check if data type of input arguments is correct
   if (is.null(api_key)) {
     stop("Please provide your API key as an argument.")
@@ -36,14 +41,27 @@ get_wheelmap_locations <- function(api_key=NULL,q = NULL, bbox = NULL, wheelchai
   if (!is.null(q) & !is.character(q)) {
     stop("Input for q must be a string.")
   }
-  if (!is.null(bbox) & !is.character(bbox)) {
+  if (!is.null(bbox) & !is.character(bbox)){
     stop("Input for bbox must be a string with four comma-seperated coordinate values; e.g. \"52.357, 52.677, 13.228, 13.548\"")
   }
-  if (!is.null(bbox) & length(strsplit(bbox, ", ")[[1]]) != 4) {
+  if (!is.null(bbox) & !is.character(bbox)){
     stop("Input for bbox must be a string with four comma-seperated coordinate values; e.g. \"52.357, 52.677, 13.228, 13.548\"")
   }
-  if(!is.null(wheelchair) & !(wheelchair %in% c("yes", "limited", "no", "unknown"))){
-    stop("Input for wheelchair must be one of the following options \"yes\", \"limited\", \"no\", \"unknown\".")
+
+  if(!is.null(bbox)){
+    if(is.character(bbox) & length(strsplit(bbox, ",")[[1]]) != 4){
+      stop("Input for bbox must be a string with four comma-seperated coordinate values; e.g. \"52.357, 52.677, 13.228, 13.548\"")
+    }
+  }
+
+  if(!is.null(wheelchair)&!is.character(wheelchair)){
+    stop("Input for wheelchair must be one of the following strings \"yes\", \"limited\", \"no\", \"unknown\".")
+  }
+
+  if(!is.null(wheelchair)){
+    if(is.character(wheelchair)&!(wheelchair %in% c("yes", "limited", "no", "unknown"))){
+      stop("Input for wheelchair must be one of the following strings \"yes\", \"limited\", \"no\", \"unknown\".")
+    }
   }
   if (!is.null(page) & !is.numeric(page)) {
     stop("Input for page must be a numeric.")
@@ -52,9 +70,6 @@ get_wheelmap_locations <- function(api_key=NULL,q = NULL, bbox = NULL, wheelchai
     stop("Input for per_page must be a numeric.")
   }
 
-  args <- list(api_key = api_key, q = q, bbox=bbox, wheelchair=wheelchair, page = page,per_page=per_page)
-  # Check that at least one argument is not null
-  stop_if_all(args[2:6], is.null, "You need to specify at least one argument")
   # Chek for internet
   check_internet()
   # Retrieve the results

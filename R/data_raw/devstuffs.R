@@ -1,3 +1,13 @@
+install.packages("devtools")
+install.packages("roxygen2")
+install.packages("usethis")
+install.packages("curl")
+install.packages("httr")
+install.packages("jsonlite")
+install.packages("attempt")
+install.packages("purrr")
+devtools::install_github("r-lib/desc")
+
 library(devtools)
 library(usethis)
 library(desc)
@@ -50,3 +60,5 @@ library(testthat)
 usethis::use_testthat()
 use_vignette("wheelmappeR")
 use_readme_rmd()
+
+
