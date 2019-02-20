@@ -1,12 +1,22 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-wheelmappeR
-===========
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# wheelmappeR
 
 The wheelmappeR package is a wrapper for the wheelmap.org API.
 
-Installation
-------------
+## Installation
 
 You can install the development version of wheelmappeR from GitHub with:
 
@@ -22,14 +32,16 @@ devtools::install_github("johMueller/wheelmappeR")
 library(wheelmappeR)
 ```
 
-Example
--------
+## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-``` r
+```{r example, eval=FALSE}
 ## Make API call for a specific region
 get_wheelmap_locations(api_key = api_key, bbox="52.35, 52.67, 13.22, 13.54")
+
 ```
 
 More explanation coming soon...
+
+
