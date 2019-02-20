@@ -42,7 +42,11 @@ get_wheelmap_locations <- function(api_key=api_key,q = NULL, bbox = NULL, wheelc
   meta <- extract_wheelmap_metadata(res, content_parsed)
   # extract results
   locations <- extract_wheelmap_locations(meta, content_parsed)
+
+  # format output
+  output <- list(meta,locations)
+  names(output) <- c("meta", "locations")
   # return results in list
-  return(list(meta,locations))
+  return(output)
 }
 

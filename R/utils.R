@@ -14,8 +14,6 @@ check_status <- function(res){
 
 base_url <- "http://wheelmap.org/api/nodes"
 
-
-
 #' Parses content returned by query to the Wheelmap API.
 #'
 #' \code{parse_wheelmap_content} parses the content sent back by
@@ -33,6 +31,7 @@ parse_wheelmap_content <- function(response){
   content_parsed  <- jsonlite::fromJSON(content_text)
   return(content_parsed)
 }
+
 
 #' Extracts metadata.
 #'
@@ -68,7 +67,21 @@ extract_wheelmap_locations <- function(metadata, content_parsed){
   empty_df <- data.frame()
   if (metadata$status_code == 200) {
     if(metadata$total_results > 0){
+      # from list to data.frame
       df <- do.call(data.frame, content_parsed$nodes)
+      #clean df
+      df$name <- as.character(df$name)
+      df$wheelchair_description <- as.character(df$wheelchair_description)
+      df$node_type.identifier <- as.factor(df$node_type.identifier)
+      df$id <- as.character(df$id)
+      df$category.identifier <- as.factor(df$category.identifier)
+      df$street <- as.character(df$street)
+      df$housenumber <- as.character(df$housenumber)
+      df$city <- as.character(df$city)
+      df$postcode <- as.character(df$postcode)
+      df$website <- as.character(df$website)
+      df$phone <- as.character(df$phone)
+
       return(df)
     } else {
       warning(paste0("The search was not successful. There were no results",
