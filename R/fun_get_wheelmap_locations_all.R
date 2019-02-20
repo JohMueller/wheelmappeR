@@ -15,7 +15,7 @@
 #' @return the results from the search
 #' @examples
 #' \dontrun{
-#' get_wheelmap_locations_all(api_key = api_key, bbox="52.3570365, 52.6770365, 13.2288599, 13.5488599") #Daten für Berlin
+#' get_wheelmap_locations_all(api_key = api_key, bbox="52.357, 52.677, 13.228, 13.548")
 #' }
 
 get_wheelmap_locations_all <- function(api_key=api_key,q = NULL, bbox = NULL, wheelchair = NULL){
@@ -32,5 +32,14 @@ get_wheelmap_locations_all <- function(api_key=api_key,q = NULL, bbox = NULL, wh
     df <- rbind(df, new[[2]], make.row.names=T)
     print(paste0("Processing page ", i," of ",total_pages))
   }
-  return(list(init[[1]], df))
+
+  # Update meta_data
+  meta <- init[[1]]
+  meta$results_returned <- nrow(df)
+
+  #format output
+  output <- list(meta, df)
+  names(output) <- c("meta_data", "locations")
+
+  return(output)
 }

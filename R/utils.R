@@ -94,3 +94,4 @@ extract_wheelmap_locations <- function(metadata, content_parsed){
     return(empty_df)
   }
 }
+

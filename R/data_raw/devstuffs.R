@@ -44,3 +44,9 @@ use_package("purrr")
 
 # Clean your description
 use_tidy_description()
+
+#testing
+library(testthat)
+usethis::use_testthat()
+use_vignette("wheelmappeR")
+use_readme_rmd()

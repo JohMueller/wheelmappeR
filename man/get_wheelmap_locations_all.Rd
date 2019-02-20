@@ -24,6 +24,6 @@ Get list of all locations
 }
 \examples{
 \dontrun{
-get_wheelmap_locations_all(api_key = api_key, bbox="52.3570365, 52.6770365, 13.2288599, 13.5488599") #Daten fÃ¼r Berlin
+get_wheelmap_locations_all(api_key = api_key, bbox="52.357, 52.677, 13.228, 13.548")
 }
 }

@@ -4,7 +4,7 @@
 \alias{get_wheelmap_locations}
 \title{Get list of all locations}
 \usage{
-get_wheelmap_locations(api_key = api_key, q = NULL, bbox = NULL,
+get_wheelmap_locations(api_key = NULL, q = NULL, bbox = NULL,
   wheelchair = NULL, page = NULL, per_page = NULL)
 }
 \arguments{
@@ -28,12 +28,13 @@ Get list of all locations
 }
 \examples{
 \dontrun{
-get_wheelmap_locations(api_key = api_key, bbox="52.3570365, 52.6770365, 13.2288599, 13.5488599") #Daten fÃ¼r Berlin
+get_wheelmap_locations(api_key = api_key, bbox="52.35, 52.67, 13.22, 13.54")
+
 # Example bbox values for different cities
 # Berlin "52.3570365, 52.6770365, 13.2288599, 13.5488599"
 # Dortmund "51.3542273, 51.6742273, 7.3052789, 7.6252789"
 # Frankfurt "50.0155435, 50.2271408, 8.4718253, 8.8004716"
 # Hamburg "53.3951118, 53.7394377, 9.7304736, 10.3251401"
-# MÃ¼nchen "48.0616017, 48.2482197, 11.3607802, 11.7228777"
+# Munich "48.0616017, 48.2482197, 11.3607802, 11.7228777"
 }
 }
