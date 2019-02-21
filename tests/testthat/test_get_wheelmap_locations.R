@@ -1,7 +1,4 @@
 context("Get locations")
-EXPECTED_METADATA_COLUMNS <- sort(c("total_results", "status_code", "request_date", "request_url",
-                                    "page_size", "page", "code", "message"))
-
 
 # TEST INVALID INPUTS
 testthat::test_that("test that function returns error if no argument provided", {
